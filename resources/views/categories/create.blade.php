@@ -28,7 +28,7 @@
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-basic">
-                                                {{-- <div class="form-group mb-25">
+                                                <div class="form-group mb-25">
                                                     <label>Name</label>
                                                     <input class="form-control form-control-lg" type="text"
                                                         name="name" placeholder="Enter Name">
@@ -37,12 +37,12 @@
                                                     <label>Type</label>
                                                     <input class="form-control form-control-lg" type="text"
                                                         name="type" placeholder="Enter Type">
-                                                </div> --}}
-                                                <div class="form-group mb-25">
+                                                </div>
+                                                {{-- <div class="form-group mb-25">
                                                     <label>File</label>
                                                     <input class="form-control form-control-lg" type="file"
                                                         name="file">
-                                                </div>
+                                                </div> --}}
                                                 <div class="form-group mb-0">
                                                     <button type="submit"
                                                         class="btn btn-lg btn-primary btn-submit">Create</button>

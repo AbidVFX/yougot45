@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Apiv1\CategoryController;
 use App\Http\Controllers\Apiv1\Auth\AuthController;
+use App\Http\Controllers\Apiv1\CategoryController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +13,17 @@ use App\Http\Controllers\Apiv1\Auth\AuthController;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
-Route::middleware('auth:api')->prefix('v1')->group(function(){
-    Route::get('/user', function (Request $request) {
-    return $request->user();
-    });
+ */
+Route::group(['middleware' => ['web','auth:api']], function()
+{
     Route::resource('categories', CategoryController::class);
     Route::post('register', [AuthController::class, 'Register'])->name('register.post');
     Route::post('login', [AuthController::class, 'postLogin'])->name('login.post');
-
 });
 
+
+
+// Route::middleware('auth:api')->group(function () {
+ 
+// 
+// });

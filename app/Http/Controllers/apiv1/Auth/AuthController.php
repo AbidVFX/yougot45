@@ -11,6 +11,10 @@ use Hash;
   
 class AuthController extends Controller
 {
+    public function __construct()
+{
+    $this->middleware('client');
+}
     /**
      * Write code on Method
      *
