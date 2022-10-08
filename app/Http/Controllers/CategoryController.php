@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use File;
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Client;
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use GuzzleHttp\RequestOptions;
 
 class CategoryController extends Controller
 {
@@ -26,14 +22,20 @@ class CategoryController extends Controller
         return view('categories.index', compact('categories'));
     }
 
+    public function CategoriesList()
+    {
+        $categories = Category::all();
+        // return $categories;
+        return view('categories.index', compact('categories'));
+    }
     /**
-         * Show the form for creating a new resource.
-         *
-         * @return \Illuminate\Http\Response
-         */
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('categories.create');
+        return view('categories.create',compact('categories'));
     }
 
     /**
@@ -44,19 +46,33 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // $request->validate([
+        //     'name' => 'required',
+        //     'type' => 'required',
+        // ]);
+
         $category = Category::create([
             'name' => $request->name,
             'type' => $request->type,
         ]);
-        return $category;
+        // if($validator->fails()) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => $errors
+        //     ], 422);
+        // } else {
+            return response()->json([
+                'message' => 'Success'
+            ], 200);
+        // }
     }
 
     /**
-         * Display the specified resource.
-         *
-         * @param  \App\Models\Category  $category
-         * @return \Illuminate\Http\Response
-         */
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
     public function show(Category $category)
     {
         return $category;
@@ -73,6 +89,10 @@ class CategoryController extends Controller
         //
     }
 
+    public function getTotalCategoryCount()
+    {
+        echo Category::all()->count();
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -95,6 +115,6 @@ class CategoryController extends Controller
     {
         $category->delete();
         return redirect()->route('categories.index')
-                        ->with('success', 'Category deleted successfully');
+            ->with('success', 'Category deleted successfully');
     }
 }

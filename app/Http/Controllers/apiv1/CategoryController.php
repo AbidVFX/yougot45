@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers\Apiv1;
 
-use File;
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Client;
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use GuzzleHttp\RequestOptions;
 
 class CategoryController extends Controller
 {
@@ -22,15 +18,15 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return $categories;
+        return response()->json(["message" => "Success", "isSuccess" => "true", 'response' => $categories]);
         // return view('categories.index', compact('categories'));
     }
 
     /**
-         * Show the form for creating a new resource.
-         *
-         * @return \Illuminate\Http\Response
-         */
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('categories.create');
@@ -48,18 +44,20 @@ class CategoryController extends Controller
             'name' => $request->name,
             'type' => $request->type,
         ]);
-        return $category;
+        return response()->json(["message" => "Success", "isSuccess" => "true", 'response' => $category]);
+
     }
 
     /**
-         * Display the specified resource.
-         *
-         * @param  \App\Models\Category  $category
-         * @return \Illuminate\Http\Response
-         */
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
     public function show(Category $category)
     {
-        return $category;
+        return response()->json(["message" => "Success", "isSuccess" => "true", 'response' => $category]);
+
     }
 
     /**
@@ -80,9 +78,16 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        // $category = Category::where('id',$id)->update(
+        //     [
+        //         'name' => $request->name,
+        //         'type' => $request->type,
+        //     ]
+        //     );
+        $category = [];
+        return response()->json(["message" => "Success", "isSuccess" => "true", 'response' => $category]);
     }
 
     /**
@@ -94,7 +99,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index')
-                        ->with('success', 'Category deleted successfully');
+        return response()->json(["message" => "Success", "isSuccess" => "true", 'response' => $category]);
+
     }
 }

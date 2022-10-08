@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Apiv1\Auth\AuthController;
-use App\Http\Controllers\Apiv1\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Apiv1\UserController;
+use App\Http\Controllers\Apiv1\CategoryController;
+use App\Http\Controllers\Apiv1\Auth\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,9 @@ Route::group(['middleware' => ['web','auth:api']], function()
     Route::resource('categories', CategoryController::class);
     Route::post('register', [AuthController::class, 'Register'])->name('register.post');
     Route::post('login', [AuthController::class, 'postLogin'])->name('login.post');
+
+    Route::resource('users', UserController::class);
+
 });
 
 

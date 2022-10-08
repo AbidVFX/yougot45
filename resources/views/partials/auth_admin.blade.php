@@ -16,7 +16,7 @@
 
         @yield('content')
     </main>
-    <div id="overlayer">
+    {{-- <div id="overlayer">
         <span class="loader-overlay">
             <div class="atbd-spin-dots spin-lg">
                 <span class="spin-dot badge-dot dot-primary"></span>
@@ -25,7 +25,7 @@
                 <span class="spin-dot badge-dot dot-primary"></span>
             </div>
         </span>
-    </div>
+    </div> --}}
     <div class="overlay-dark-sidebar"></div>
     
 </body>

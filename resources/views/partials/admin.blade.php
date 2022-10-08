@@ -20,17 +20,17 @@
         @yield('content')
         @include('partials.footer')
     </main>
-    {{-- <div id="overlayer">
-        <span class="loader-overlay">
+    <div id="overlayer">
+        {{-- <span class="loader-overlay">
             <div class="atbd-spin-dots spin-lg">
                 <span class="spin-dot badge-dot dot-primary"></span>
                 <span class="spin-dot badge-dot dot-primary"></span>
                 <span class="spin-dot badge-dot dot-primary"></span>
                 <span class="spin-dot badge-dot dot-primary"></span>
             </div>
-        </span>
-    </div> --}}
-    <div class="overlay-dark-sidebar"></div>
+        </span> --}}
+    </div>
+    {{-- <div class="overlay-dark-sidebar"></div> --}}
 
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDduF2tLXicDEPDMAtC6-NLOekX0A5vlnY"></script>
     
@@ -80,6 +80,8 @@
 <script src="{{ asset('assets/theme_assets/js/jvectormap-init.js') }}"></script>
 <script src="{{ asset('assets/theme_assets/js/leaflet-init.js') }}"></script>
 <script src="{{ asset('assets/theme_assets/js/main.js') }}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <!-- endinject-->
 </body>
 

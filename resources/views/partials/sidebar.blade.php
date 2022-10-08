@@ -6,7 +6,7 @@
                     <span>Main menu</span>
                 </li>
                 <li onclick="location.href='/dashboard';" class="has-child open">
-                    <a href="#" target="_self" class="active">
+                    <a href="#" target="_self" class="{{ request()->is('dashboard*') ? 'active' : '' }}">
                         <span data-feather="home" class="nav-icon"></span>
                         <span class="menu-text">Dashboard</span>
                     </a>
@@ -14,18 +14,15 @@
                 <li class="menu-title m-top-30">
                     <span>Resources</span>
                 </li>
-                <li class="has-child">
-                    <a href="" class="">
+                <li class="has-child {{ request()->is('categories*') ? 'open' : '' }}">
+                    <a href="/categories" class="{{ request()->is('categories*') ? 'active' : '' }}">
                         <span data-feather="server" class="nav-icon"></span>
                         <span class="menu-text">Categories</span>
                         <span class="toggle-icon"></span>
                     </a>
                     <ul>
                         <li>
-                            <a class="" href="/categories">List</a>
-                        </li>
-                        <li>
-                            <a class="" href="/categories/create">Create</a>
+                            <a class="{{ request()->is('categories') ? 'active' : '' }}" href="/categories">List</a>
                         </li>
                     </ul>
                 </li>
